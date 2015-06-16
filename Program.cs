@@ -1,15 +1,28 @@
-﻿using System;
+﻿/**
+ * This program allows user to play ROCK, PAPER AND SCISSOR game vs Computer
+ * @author yam shrestha
+ */
+using System;
 using System.Collections.Generic;
 
 namespace RPSGame
 {
 	class MainClass
 	{
+		//This field will store how many times the specific move has been used by computer
 		private Dictionary<string,int> computerDic = new Dictionary<string, int> ();
+
+		//This field will store how many times the specific move has been used by computer
 		private Dictionary<string,int> humanDic = new Dictionary<string, int> ();
-		private int computerWon = 0;
-		private int humanWon = 0;
-		private int drawGame = 0;
+
+		//This field will store how many times computer has won
+		private static int computerWon = 0;
+
+		//This field will store how many times human has won
+		private static int humanWon = 0;
+
+		//This field will store how many times game was draw
+		private static int drawGame = 0;
 
 		public MainClass ()
 		{
@@ -22,6 +35,13 @@ namespace RPSGame
 			humanDic.Add ("SCISSOR", 0);
 		}
 
+		/**
+		 * This method prints out the result
+		 * how many times the game has been played
+		 * how many times computer has won
+		 * how many times human has won
+		 * how many times the match has draw
+		 */
 		public void printOutput ()
 		{
 			int maxComputerMove = -1000;
@@ -64,6 +84,11 @@ namespace RPSGame
 			}
 		}
 
+		/**
+		 * 
+		 * This method takes the entered input and compare with computer randomly generated move
+		 * The computer move has been generated randomly using date and time 
+		 */ 
 		public void playGame (String userSelection)
 		{
 			int userSelectionNumber = 0;
@@ -109,7 +134,7 @@ namespace RPSGame
 					Console.WriteLine ("Computer selected ROCK, Computer WIN");
 				} else if (userSelectionNumber == 2) {
 					humanWon++;
-					Console.WriteLine ("Computer selected ROCK, You WIN");
+					Console.WriteLine ("Computer selected ROCK, User WIN");
 				}
 				break;
 			case 1:
@@ -118,7 +143,7 @@ namespace RPSGame
 				computerDic ["SCISSOR"] = countComputer;
 				if (userSelectionNumber == 0) {
 					humanWon++;
-					Console.WriteLine ("Computer selected SCISSOR, You WIN");
+					Console.WriteLine ("Computer selected SCISSOR, User WIN");
 				} else if (userSelectionNumber == 1) {
 					drawGame++;
 					Console.WriteLine ("Computer selected SCISSOR, DRAW");
@@ -136,7 +161,7 @@ namespace RPSGame
 					Console.WriteLine ("Computer selected PAPER, Computer WIN");
 				} else if (userSelectionNumber == 1) {
 					humanWon++;
-					Console.WriteLine ("Computer selected PAPER, You Win");
+					Console.WriteLine ("Computer selected PAPER, User Win");
 				} else if (userSelectionNumber == 2) {
 					drawGame++;
 					Console.WriteLine ("Computer selected PAPER, DRAW");
@@ -147,6 +172,11 @@ namespace RPSGame
 
 		}
 
+		/**
+		 * 
+		 * This main method ask user to enter appropriate move. 
+		 * A User also asked to continue game or not
+		 */ 
 		public static void Main (string[] args)
 		{
 			MainClass main = new MainClass ();
@@ -176,7 +206,6 @@ namespace RPSGame
 					continueGame = false;
 				}
 				Console.WriteLine ();
-
 			}
 
 			main.printOutput ();
