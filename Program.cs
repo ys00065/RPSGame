@@ -45,20 +45,17 @@ namespace RPSGame
 		public void printOutput ()
 		{
 			int maxComputerMove = -1000;
-			string move = "";
+			int maxHumanMove = -1000;
 			foreach (KeyValuePair<string, int> pair in computerDic) {
 				if (pair.Value > maxComputerMove) {
 					maxComputerMove = pair.Value;
-					move = pair.Key;
 				}
 			}
 
-			int maxHumanMove = -1000;
-			string moveHuman = "";
+
 			foreach (KeyValuePair<string, int> pair in humanDic) {
 				if (pair.Value > maxHumanMove) {
 					maxHumanMove = pair.Value;
-					moveHuman = pair.Key;
 				}
 			}
 
@@ -93,6 +90,7 @@ namespace RPSGame
 		{
 			int userSelectionNumber = 0;
 			int count = 0;
+			int countComputer = 0;
 			switch (userSelection) {
 			case "ROCK":
 				count = humanDic ["ROCK"];
@@ -120,7 +118,7 @@ namespace RPSGame
 			//computerSelection=0 ROCK
 			//computerSelection=1 SCISSOR
 			//computerSelection=2 PAPER
-			int countComputer = 0;
+
 			switch (computerSelection) {
 			case 0:
 				countComputer = computerDic ["ROCK"];
@@ -175,7 +173,7 @@ namespace RPSGame
 		/**
 		 * 
 		 * This main method ask user to enter appropriate move. 
-		 * A User also asked to continue game or not
+		 * A User also gets asked to continue game or not
 		 */ 
 		public static void Main (string[] args)
 		{
